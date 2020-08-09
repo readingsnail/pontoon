@@ -640,9 +640,9 @@ SECURE_BROWSER_XSS_FILTER = True
 SECURE_SSL_REDIRECT = not (DEBUG or os.environ.get("CI", False))
 
 # Content-Security-Policy headers
-CSP_DEFAULT_SRC = ("'none'",)
+CSP_DEFAULT_SRC = ("https:",)
 CSP_CHILD_SRC = ("https:",)
-CSP_FRAME_SRC = ("https:",)  # Older browsers
+#CSP_FRAME_SRC = ("https:",)  # Older browsers
 CSP_CONNECT_SRC = (
     "'self'",
     "https://bugzilla.mozilla.org/rest/bug",
@@ -654,21 +654,21 @@ CSP_IMG_SRC = (
     # Needed for ACE editor images
     "data:",
     "https://*.wp.com/pontoon.mozilla.org/",
-    "https://www.google-analytics.com",
-    "https://www.gravatar.com/avatar/",
+#    "https://www.google-analytics.com",
+#    "https://www.gravatar.com/avatar/",
 )
 CSP_SCRIPT_SRC = (
     "'self'",
     "'unsafe-eval'",
-    "'sha256-fDsgbzHC0sNuBdM4W91nXVccgFLwIDkl197QEca/Cl4='",
+#    "'sha256-fDsgbzHC0sNuBdM4W91nXVccgFLwIDkl197QEca/Cl4='",
     # Rules related to Google Analytics
-    "'sha256-G5/M3dBlZdlvno5Cibw42fbeLr2PTEGd1M909Z7vPZE='",
-    "https://www.google-analytics.com/analytics.js",
+#    "'sha256-G5/M3dBlZdlvno5Cibw42fbeLr2PTEGd1M909Z7vPZE='",
+#    "https://www.google-analytics.com/analytics.js",
 )
-CSP_STYLE_SRC = (
-    "'self'",
-    "'unsafe-inline'",
-)
+#CSP_STYLE_SRC = (
+#    "'self'",
+#    "'unsafe-inline'",
+#)
 
 # Needed if site not hosted on HTTPS domains (like local setup)
 if not (HEROKU_DEMO or SITE_URL.startswith("https")):
