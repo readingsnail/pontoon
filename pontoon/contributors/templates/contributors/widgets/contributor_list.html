@@ -16,8 +16,8 @@
   <table class="striped">
     <thead>
       <tr>
-        <th>Contributor</th>
-        <th>Translations</th>
+        <th>기여자</th>
+        <th>번역자</th>
       </tr>
     </thead>
     <tbody>
@@ -33,16 +33,16 @@
         <td class="stats">
           <div class="details">
             <div class="total">
-              <span>All strings</span>
+              <span>전체 기호열</span>
               <p>{{ contributor.translations_count|intcomma }}</p>
             </div><div class="approved">
-              <span>Translated</span>
+              <span>번역됨</span>
               <p>{{ contributor.translations_approved_count|intcomma }}</p>
             </div><div class="fuzzy">
-              <span>Fuzzy</span>
+              <span>모호함</span>
               <p>{{ contributor.translations_needs_work_count|intcomma }}</p>
             </div><div class="unreviewed">
-              <span>Unreviewed</span>
+              <span>리뷰 안됨</span>
               <p>{{ contributor.translations_unapproved_count|intcomma }}</p>
             </div>
           </div>
