@@ -658,7 +658,7 @@ CSP_IMG_SRC = (
     "https://www.gravatar.com/avatar/",
 )
 CSP_SCRIPT_SRC = (
-    "'self'"
+    "'self'",
     "'unsafe-eval'",
     "'sha256-fDsgbzHC0sNuBdM4W91nXVccgFLwIDkl197QEca/Cl4='",
     # Rules related to Google Analytics
