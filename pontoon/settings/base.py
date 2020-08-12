@@ -187,7 +187,7 @@ MIDDLEWARE = (
     "session_csrf.CsrfMiddleware",
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
-    "csp.middleware.CSPMiddleware",
+#    "csp.middleware.CSPMiddleware",
     "pontoon.base.middleware.AutomaticLoginUserMiddleware",
 )
 
