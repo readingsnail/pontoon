@@ -664,7 +664,7 @@ CSP_SCRIPT_SRC = (
     # Rules related to Google Analytics
 #    "'sha256-G5/M3dBlZdlvno5Cibw42fbeLr2PTEGd1M909Z7vPZE='",
 #    "https://www.google-analytics.com/analytics.js",
-#)
+)
 CSP_STYLE_SRC = (
     "'self'",
     "'unsafe-inline'",
