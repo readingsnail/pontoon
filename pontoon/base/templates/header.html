@@ -49,9 +49,9 @@
               {% endif %}
 
               {% if perms.base.can_manage_project %}
-              <li><a href="{{ url('pontoon.admin') }}"><i class="fa fa-wrench fa-fw"></i>관리자</a></li>
+              <li><a href="{{ url('pontoon.admin') }}"><i class="fa fa-wrench fa-fw"></i>관리</a></li>
                 {% if project %}
-                <li><a href="{{ url('pontoon.admin.project', project.slug) }}"><i class="fa fa-wrench fa-fw"></i>현재 프로젝트의 관리자</a></li>
+                <li><a href="{{ url('pontoon.admin.project', project.slug) }}"><i class="fa fa-wrench fa-fw"></i>현재 프로젝트 관리</a></li>
                 {% endif %}
               {% endif %}
 

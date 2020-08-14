@@ -749,7 +749,7 @@ try:
 except ValueError:
     SYNC_TASK_TIMEOUT = 60 * 60 * 1  # 1 hour
 
-SYNC_LOG_RETENTION = 90  # days
+SYNC_LOG_RETENTION = 5  # days
 
 MANUAL_SYNC = os.environ.get("MANUAL_SYNC", "False") != "False"
 
@@ -845,4 +845,4 @@ DJANGO_NOTIFICATIONS_CONFIG = {
 }
 
 # Maximum number of read notifications to display in the notifications menu
-NOTIFICATIONS_MAX_COUNT = 7
+NOTIFICATIONS_MAX_COUNT = 5

@@ -8,7 +8,7 @@
     <thead>
       <tr>
         <th class="name asc">프로젝트<i class="fa"></i></th>
-        <th class="deadline">마감선<i class="fa"></i></th>
+        <th class="deadline">마감<i class="fa"></i></th>
         <th class="priority inverted">중요도<i class="fa"></i></th>
         <th class="latest-activity">마지막 활동<i class="fa"></i></th>
         <th class="progress">진행률<i class="fa"></i></th>
@@ -63,7 +63,7 @@
   </table>
   {% if request %}
     <div id="request-item-note">
-      <p>프로젝트 요청은 자동으로 이뤄지지 않습니다. Pontoon 어드민과 팀 매니저가 이를 할 수 있습니다. 우린 빠른 시간내에 할 것입니다. 일단 새 사람을 모으기 위해 <a href="{{ url('pontoon.teams.info', locale.code) }}">로컬라이제이션 팀</a>을 두들겨 보세요.</p>
+      <p>프로젝트 요청은 자동으로 이뤄지지 않습니다. Pontoon 어드민과 팀 매니저가 이를 할 수 있습니다. 일단 새 사람을 모으기 위해 <a href="{{ url('pontoon.teams.info', locale.code) }}">로컬라이제이션 팀</a>을 두들겨 보세요.</p>
     </div>
     <button id="request-item">새 프로젝트 요청</button>
   {% endif %}
