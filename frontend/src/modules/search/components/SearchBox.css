@@ -52,12 +52,11 @@
 }
 
 .search-box .status.fa::before {
-    color: #4D5967;
+    color: #AAAAAA;
     content: "";
 }
 
 .search-box .all .status::before {
-    color: #AAAAAA;
     content: "";
     font-size: 16px;
 }
@@ -79,7 +78,7 @@
 }
 
 .search-box .missing .status:before {
-    color: #3F4752;
+    color: #5F7285;
 }
 
 .search-box .unreviewed .status:before {
@@ -94,12 +93,10 @@
 }
 
 .search-box .unchanged .status:before {
-    color: #AAAAAA;
     content: "";
 }
 
 .search-box .empty .status:before {
-    color: #AAAAAA;
     content: "\f111";
     font-weight: 100;
 }
@@ -110,25 +107,18 @@
 }
 
 .search-box .rejected .status:before {
-    color: #AAAAAA;
     content: "";
 }
 
 .search-box .tag .status:before {
-    color: #AAAAAA;
     content: "";
 }
 
 .search-box .time-range .status:before {
-    color: #AAAAAA;
     content: "";
 }
 
 .search-box .author .status:before {
-    color: #AAAAAA;
     content: "";
 }
 
-.search-box .missing:hover .status:before {
-    color: #4D5967;
-}
