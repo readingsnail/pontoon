@@ -154,7 +154,6 @@ INSTALLED_APPS = (
     "django.contrib.sites",
     # Third-party apps, patches, fixes
     "django_jinja",
-    "django_nose",
     "pipeline",
     "session_csrf",
     "guardian",
@@ -265,9 +264,6 @@ AUTHENTICATION_BACKENDS = [
     "guardian.backends.ObjectPermissionBackend",
 ]
 
-# This variable is required by django-guardian.
-# App supports giving permissions for anonymous users.
-ANONYMOUS_USER_ID = -1
 GUARDIAN_RAISE_403 = True
 
 PIPELINE_CSS = {
@@ -595,17 +591,6 @@ if os.environ.get("DJANGO_SQL_LOG", False):
         "level": "DEBUG",
         "handlers": ["console"],
     }
-
-# Tests
-TEST_RUNNER = "django_nose.NoseTestSuiteRunner"
-NOSE_ARGS = [
-    "--logging-filter=-factory,-django.db,-raygun4py",
-    "--logging-clear-handlers",
-]
-
-# Disable nose-progressive on CI due to ugly output.
-if not os.environ.get("CI", False):
-    NOSE_ARGS.append("--with-progressive")
 
 # General auth settings
 LOGIN_URL = "/"
