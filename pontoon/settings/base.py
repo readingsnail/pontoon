@@ -627,8 +627,8 @@ SECURE_SSL_REDIRECT = not (DEBUG or os.environ.get("CI", False))
 
 # Content-Security-Policy headers
 CSP_DEFAULT_SRC = ("https:",)
-CSP_CHILD_SRC = ("https:",)
-CSP_FRAME_SRC = ("https:",)  # Older browsers
+CSP_FRAME_SRC = ("https:",)
+CSP_WORKER_SRC = ("https:",)
 CSP_CONNECT_SRC = (
     "'self'",
     "https://bugzilla.mozilla.org/rest/bug",
@@ -658,9 +658,9 @@ CSP_IMG_SRC = (
 #)
 
 # Needed if site not hosted on HTTPS domains (like local setup)
-#if not (HEROKU_DEMO or SITE_URL.startswith("https")):
-#    CSP_IMG_SRC = CSP_IMG_SRC + ("http://www.gravatar.com/avatar/",)
-#    CSP_CHILD_SRC = CSP_FRAME_SRC = CSP_FRAME_SRC + ("http:",)
+if not (HEROKU_DEMO or SITE_URL.startswith("https")):
+    CSP_IMG_SRC = CSP_IMG_SRC + ("http://www.gravatar.com/avatar/",)
+    CSP_WORKER_SRC = CSP_FRAME_SRC = CSP_FRAME_SRC + ("http:",)
 
 # For absolute urls
 #try:
