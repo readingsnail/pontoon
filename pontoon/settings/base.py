@@ -829,4 +829,7 @@ DJANGO_NOTIFICATIONS_CONFIG = {
 }
 
 # Maximum number of read notifications to display in the notifications menu
-NOTIFICATIONS_MAX_COUNT = 5
+NOTIFICATIONS_MAX_COUNT = 7
+
+# Number of events displayed on the Contributor's timeline per page.
+CONTRIBUTORS_TIMELINE_EVENTS_PER_PAGE = 10
