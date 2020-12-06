@@ -273,6 +273,7 @@ export function sendTranslation(
                     pluralForm,
                     locale,
                 );
+                dispatch(reset());
             }
         }
 
