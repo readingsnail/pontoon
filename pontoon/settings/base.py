@@ -653,8 +653,8 @@ CSP_IMG_SRC = (
     # Rules related to Google Analytics
 #    "'sha256-G5/M3dBlZdlvno5Cibw42fbeLr2PTEGd1M909Z7vPZE='",
 #    "https://www.google-analytics.com/analytics.js",
-#)
-#CSP_STYLE_SRC = (
+# )
+# CSP_STYLE_SRC = (
 #    "'self'",
 #    "'unsafe-inline'",
 #)
@@ -665,12 +665,12 @@ if not (HEROKU_DEMO or SITE_URL.startswith("https")):
     CSP_WORKER_SRC = CSP_FRAME_SRC = CSP_FRAME_SRC + ("http:",)
 
 # For absolute urls
-#try:
+# try:
 #    DOMAIN = socket.gethostname()
-#except socket.error:
+# except socket.error:
 #    DOMAIN = "localhost"
-#PROTOCOL = "http://"
-#PORT = 80
+# PROTOCOL = "http://"
+# PORT = 80
 
 # Names for slave databases from the DATABASES setting.
 SLAVE_DATABASES = []
