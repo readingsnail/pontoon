@@ -57,8 +57,6 @@ from pontoon.sync.vcs.repositories import (
 
 log = logging.getLogger(__name__)
 
-UNUSABLE_SEARCH_CHAR = "☠"
-
 
 def combine_entity_filters(entities, filter_choices, filters, *args):
     """Return a combination of filters to apply to an Entity object.
@@ -1670,6 +1668,11 @@ class ProjectLocale(AggregatedStats):
         ordering = ("pk",)
         permissions = (("can_translate_project_locale", "Can add translations"),)
 
+    def __str__(self):
+        return "{project} / {locale}".format(
+            project=self.project.name, locale=self.locale.code,
+        )
+
     @classmethod
     def get_latest_activity(cls, self, extra=None):
         """
@@ -2089,7 +2092,9 @@ class Resource(models.Model):
         return self.format in self.EMPTY_TRANSLATION_FORMATS
 
     def __str__(self):
-        return "%s: %s" % (self.project.name, self.path)
+        return "{project}: {resource}".format(
+            project=self.project.name, resource=self.path,
+        )
 
     @classmethod
     def get_path_format(self, path):
@@ -2793,20 +2798,7 @@ class Entity(DirtyFieldsMixin, models.Model):
         # Filter by search parameters
         if search:
             # Split search string on spaces except if between non-escaped quotes.
-            search_list = [
-                x.strip('"').replace(UNUSABLE_SEARCH_CHAR, '"')
-                for x in re.findall(
-                    '([^"]\\S*|".+?")\\s*', search.replace('\\"', UNUSABLE_SEARCH_CHAR)
-                )
-            ]
-
-            # Search for `""` and `"` when entered as search terms
-            if search == '""' and not search_list:
-                search_list = ['""']
-
-            if search == '"' and not search_list:
-                search_list = ['"']
-
+            search_list = utils.get_search_phrases(search)
             search_query_list = [(s, locale.db_collation) for s in search_list]
 
             translation_filters = (
