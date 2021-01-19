@@ -5,7 +5,6 @@ import { useDispatch, useSelector } from 'react-redux';
 import * as editor from 'core/editor';
 import * as entities from 'core/entities';
 import * as unsavedchanges from 'modules/unsavedchanges';
-import * as otherlocales from 'modules/otherlocales';
 
 /**
  * Return a function to handle shortcuts in a translation form.
@@ -33,8 +32,8 @@ export default function useHandleShortcuts() {
     const machineryTranslations = useSelector(
         (state) => state.machinery.translations,
     );
-    const otherLocaleTranslations = useSelector((state) =>
-        otherlocales.selectors.getTranslationsFlatList(state),
+    const otherLocaleTranslations = useSelector(
+        (state) => state.otherlocales.translations,
     );
 
     return (
@@ -122,8 +121,13 @@ export default function useHandleShortcuts() {
             clearEditorFn();
         }
 
-        // On (Shift+) Tab, copy Machinery/Locales matches into translation.
-        if (key === 9) {
+        // On Ctrl + Shift + Up/Down, copy next/previous entry from active
+        // helper tab (Machinery or Locales) into translation.
+        if (event.ctrlKey && event.shiftKey && !event.altKey) {
+            if (key !== 38 && key !== 40) {
+                return;
+            }
+
             let translations;
             let copyTranslationFn;
             if (editorState.selectedHelperTabIndex === 0) {
@@ -138,15 +142,18 @@ export default function useHandleShortcuts() {
             if (!numTranslations) {
                 return;
             }
+
             const currentIdx = editorState.selectedHelperElementIndex;
             let nextIdx;
-            if (!event.shiftKey) {
+            if (key === 40) {
                 nextIdx = (currentIdx + 1) % numTranslations;
             } else {
                 nextIdx = (currentIdx - 1 + numTranslations) % numTranslations;
             }
-            const newTranslation = translations[nextIdx];
+
             dispatch(editor.actions.selectHelperElementIndex(nextIdx));
+
+            const newTranslation = translations[nextIdx];
             handledEvent = true;
             copyTranslationFn(newTranslation);
         }
