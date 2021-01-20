@@ -368,7 +368,7 @@ PIPELINE_CSS = {
         "output_filename": "css/terms.min.css",
     },
     "homepage": {
-        "source_filenames": ("css/fullpage.css", "css/homepage.css",),
+        "source_filenames": ("css/homepage.css",),
         "output_filename": "css/homepage.min.css",
     },
 }
@@ -467,7 +467,7 @@ PIPELINE_JS = {
         "output_filename": "js/machinery.min.js",
     },
     "homepage": {
-        "source_filenames": ("js/lib/fullpage.js", "js/homepage.js"),
+        "source_filenames": ("js/homepage.js",),
         "output_filename": "js/homepage.min.js",
     },
 }
@@ -475,11 +475,11 @@ PIPELINE_JS = {
 PIPELINE = {
     "STYLESHEETS": PIPELINE_CSS,
     "JAVASCRIPT": PIPELINE_JS,
+    "JS_COMPRESSOR": "pipeline.compressors.terser.TerserCompressor",
     "YUGLIFY_BINARY": path(
         os.environ.get("YUGLIFY_BINARY", "node_modules/.bin/yuglify")
     ),
-    "BABEL_BINARY": path("node_modules/.bin/babel"),
-    "BABEL_ARGUMENTS": "--modules ignore",
+    "TERSER_BINARY": path(os.environ.get("TERSER_BINARY", "node_modules/.bin/terser")),
     "DISABLE_WRAPPER": True,
 }
 
